@@ -1,7 +1,7 @@
 "use client";
 import styled from "styled-components";
-import { Heading } from "../src/components/Heading";
-import { Metadata } from "next";
+import { Heading } from "@/src/components/Heading";
+import { CircleLayout } from "@/src/components/CircleLayout";
 
 const Container = styled.div`
   background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
@@ -17,6 +17,7 @@ export default function HomePage({}) {
   return (
     <Container>
       <Heading />
+      <CircleLayout />
     </Container>
   );
 }
