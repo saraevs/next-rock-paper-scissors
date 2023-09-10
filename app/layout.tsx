@@ -1,8 +1,8 @@
 import StyledComponentsRegistry from "@/lib/registry";
-import { Inter } from "next/font/google";
+import { Barlow_Semi_Condensed } from "next/font/google";
 
-// If loading a variable font, you don't need to specify the font weight
-const inter = Inter({
+const barlowSemiCondensed = Barlow_Semi_Condensed({
+  weight: "600",
   subsets: ["latin"],
   display: "swap",
 });
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={barlowSemiCondensed.className}>
       <body>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
