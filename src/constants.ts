@@ -1,1 +1,1 @@
-export const MOBILE_SCREEN_WIDTH_PX = '374px'
+export const MOBILE_SCREEN_WIDTH_PX = '375px'

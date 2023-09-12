@@ -5,9 +5,21 @@ import rockIcon from "public/images/icon-rock.svg";
 import paperIcon from "public/images/icon-paper.svg";
 import scissorsIcon from "public/images/icon-scissors.svg";
 import { Icon } from "@/types";
+import { MOBILE_SCREEN_WIDTH_PX } from "../constants";
 
 const StyledCircleLayout = styled.div`
   display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 100px;
+  @media (max-width: ${MOBILE_SCREEN_WIDTH_PX}) {
+    gap: 70px;
+  }
+`;
+
+const StyledCircle = styled(Circle)`
+  flex: 1;
 `;
 
 type CircleLayoutProps = {};
@@ -35,18 +47,16 @@ export const CircleLayout: React.FC<CircleLayoutProps> = ({}) => {
   ];
   return (
     <StyledCircleLayout>
-      <>
-        {icons.map((i) => {
-          return (
-            <Circle
-              title={i.title}
-              icon={i.icon}
-              color1={i.color1}
-              color2={i.color2}
-            />
-          );
-        })}
-      </>
+      {icons.map((i) => {
+        return (
+          <StyledCircle
+            title={i.title}
+            icon={i.icon}
+            color1={i.color1}
+            color2={i.color2}
+          />
+        );
+      })}
     </StyledCircleLayout>
   );
 };
