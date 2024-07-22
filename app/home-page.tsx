@@ -4,6 +4,7 @@ import { Heading } from "@/src/components/Heading";
 import { Options } from "@/src/components/Options";
 import { useState } from "react";
 import { Option } from "../src/types";
+import { Result } from "@/src/components/Result";
 
 const Container = styled.div`
   background-image: radial-gradient(
@@ -37,7 +38,7 @@ export default function HomePage({}) {
       {!userChoice && (
         <Options handleWin={handleWin} setChoice={setUserChoice} />
       )}
-      <div>{userChoice?.title}</div>
+      {userChoice && <Result userChoice={userChoice} />}
     </Container>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Circle } from "./Circle";
+import { CircleButton } from "./CircleButton";
 import styled from "styled-components";
 import rockIcon from "public/images/icon-rock.svg";
 import paperIcon from "public/images/icon-paper.svg";
@@ -20,7 +20,7 @@ const StyledOptions = styled.div`
   }
 `;
 
-const StyledCircle = styled(Circle)`
+const StyledCircle = styled(CircleButton)`
   flex: 1;
 `;
 
