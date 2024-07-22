@@ -24,12 +24,16 @@ const StyledResult = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 16px;
 `;
 
 const StyledButton = styled.button`
   background-color: #fff;
-  border-radius: 5%;
+  border-radius: 5px;
   border: 0;
+  padding: 8px;
+  width: 100%;
+  font-size: 8pt;
 `;
 
 const selectRandomOption = () => {
@@ -77,7 +81,7 @@ export const Result: React.FC<ResultProps> = ({
       </div>
       <StyledResult>
         {result}
-        <StyledButton onClick={clearUserChoice}>Play Again</StyledButton>
+        <StyledButton onClick={clearUserChoice}>PLAY AGAIN</StyledButton>
       </StyledResult>
       <div>
         <ChoiceHeading>The House Picked</ChoiceHeading>
