@@ -35,9 +35,7 @@ export default function HomePage({}) {
   return (
     <Container>
       <Heading score={currentScore} />
-      {!userChoice && (
-        <Options handleWin={handleWin} setChoice={setUserChoice} />
-      )}
+      {!userChoice && <Options setChoice={setUserChoice} />}
       {userChoice && <Result userChoice={userChoice} />}
     </Container>
   );
