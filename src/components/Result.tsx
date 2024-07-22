@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Option, Outcome } from "../types";
 import styled from "styled-components";
 import { Circle } from "./Circle";
@@ -23,6 +23,13 @@ const StyledResult = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+`;
+
+const StyledButton = styled.button`
+  background-color: #fff;
+  border-radius: 5%;
+  border: 0;
 `;
 
 const selectRandomOption = () => {
@@ -43,12 +50,24 @@ const calculateResult = (userChoice: Option, houseChoice: Option): Outcome => {
 
 type ResultProps = {
   userChoice: Option;
+  handleUserWin: () => void;
+  clearUserChoice: () => void;
 };
 
-export const Result: React.FC<ResultProps> = ({ userChoice }) => {
-  const [houseChoice] = useState<Option>(selectRandomOption());
+export const Result: React.FC<ResultProps> = ({
+  userChoice,
+  handleUserWin,
+  clearUserChoice,
+}) => {
+  const [houseChoice, setHouseChoice] = useState<Option>(selectRandomOption());
 
   const result = calculateResult(userChoice, houseChoice);
+
+  useEffect(() => {
+    if (result === Outcome.youWin) {
+      handleUserWin();
+    }
+  }, [result]);
 
   return (
     <FlexRow>
@@ -56,7 +75,10 @@ export const Result: React.FC<ResultProps> = ({ userChoice }) => {
         <ChoiceHeading>You Picked</ChoiceHeading>
         <Circle option={userChoice} />
       </div>
-      <StyledResult>{result}</StyledResult>
+      <StyledResult>
+        {result}
+        <StyledButton onClick={clearUserChoice}>Play Again</StyledButton>
+      </StyledResult>
       <div>
         <ChoiceHeading>The House Picked</ChoiceHeading>
         <Circle option={houseChoice} />

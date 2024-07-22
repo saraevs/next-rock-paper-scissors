@@ -28,15 +28,26 @@ export default function HomePage({}) {
   const [currentScore, setCurrentScore] = useState(0);
   const [userChoice, setUserChoice] = useState<Option>();
 
-  const handleWin = () => {
+  const handleUserWin = () => {
+    console.log("handleUserWin");
     setCurrentScore(currentScore + 1);
+  };
+
+  const clearUserChoice = () => {
+    setUserChoice(undefined);
   };
 
   return (
     <Container>
       <Heading score={currentScore} />
       {!userChoice && <Options setChoice={setUserChoice} />}
-      {userChoice && <Result userChoice={userChoice} />}
+      {userChoice && (
+        <Result
+          userChoice={userChoice}
+          handleUserWin={handleUserWin}
+          clearUserChoice={clearUserChoice}
+        />
+      )}
     </Container>
   );
 }

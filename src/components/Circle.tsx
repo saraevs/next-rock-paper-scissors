@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 import { Option } from "../types";
 import { INNER_CIRCLE_WIDTH } from "../constants";
 
-const OuterCircle = styled.div<{ color1: string; color2: string }>`
+const OuterCircle = styled.div<{ $color1: string; $color2: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,8 +12,8 @@ const OuterCircle = styled.div<{ color1: string; color2: string }>`
   height: ${INNER_CIRCLE_WIDTH + INNER_CIRCLE_WIDTH / 4}px;
   border-radius: 50%;
   background-image: radial-gradient(
-    ${(props) => props.color1},
-    ${(props) => props.color2}
+    ${(props) => props.$color1},
+    ${(props) => props.$color2}
   );
 `;
 
@@ -33,7 +33,7 @@ type CircleProps = {
 
 export const Circle: React.FC<CircleProps> = ({ option }) => {
   return (
-    <OuterCircle color1={option.color1} color2={option.color2}>
+    <OuterCircle $color1={option.color1} $color2={option.color2}>
       <InnerCircle>
         <Image src={option.icon} alt={option.title} width={70} height={70} />
       </InnerCircle>
