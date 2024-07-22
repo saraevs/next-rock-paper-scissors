@@ -2,7 +2,11 @@ import React from "react";
 import Image from "next/image";
 import { styled } from "styled-components";
 import { Option } from "../types";
-import { INNER_CIRCLE_WIDTH } from "../constants";
+import {
+  INNER_CIRCLE_WIDTH,
+  MOBILE_INNER_CIRCLE_WIDTH,
+  MOBILE_SCREEN_WIDTH_PX,
+} from "../constants";
 
 const OuterCircle = styled.div<{ $color1: string; $color2: string }>`
   display: flex;
@@ -15,6 +19,10 @@ const OuterCircle = styled.div<{ $color1: string; $color2: string }>`
     ${(props) => props.$color1},
     ${(props) => props.$color2}
   );
+  @media (max-width: ${MOBILE_SCREEN_WIDTH_PX}) {
+    width: ${MOBILE_INNER_CIRCLE_WIDTH + MOBILE_INNER_CIRCLE_WIDTH / 4}px;
+    height: ${MOBILE_INNER_CIRCLE_WIDTH + MOBILE_INNER_CIRCLE_WIDTH / 4}px;
+  }
 `;
 
 const InnerCircle = styled.div`
@@ -25,6 +33,10 @@ const InnerCircle = styled.div`
   height: ${INNER_CIRCLE_WIDTH}px;
   border-radius: 50%;
   background-color: #fff;
+  @media (max-width: ${MOBILE_SCREEN_WIDTH_PX}) {
+    width: ${MOBILE_INNER_CIRCLE_WIDTH}px;
+    height: ${MOBILE_INNER_CIRCLE_WIDTH}px;
+  }
 `;
 
 type CircleProps = {

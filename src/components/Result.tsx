@@ -2,12 +2,18 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Option, Outcome } from "../types";
 import styled from "styled-components";
 import { Circle } from "./Circle";
-import { options } from "../constants";
+import { MOBILE_SCREEN_WIDTH_PX, options } from "../constants";
 
-const FlexRow = styled.div`
+const Flex = styled.div`
   display: flex;
   gap: 72px;
   color: #fff;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: ${MOBILE_SCREEN_WIDTH_PX}) {
+    flex-direction: column;
+    gap: 16px;
+  }
 `;
 
 const ChoiceHeading = styled.span`
@@ -25,6 +31,9 @@ const StyledResult = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 16px;
+  @media (max-width: ${MOBILE_SCREEN_WIDTH_PX}) {
+    padding-top: 0;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -74,10 +83,12 @@ export const Result: React.FC<ResultProps> = ({
   }, [result]);
 
   return (
-    <FlexRow>
+    <Flex>
       <div>
         <ChoiceHeading>You Picked</ChoiceHeading>
-        <Circle option={userChoice} />
+        <Flex>
+          <Circle option={userChoice} />
+        </Flex>
       </div>
       <StyledResult>
         {result}
@@ -85,8 +96,10 @@ export const Result: React.FC<ResultProps> = ({
       </StyledResult>
       <div>
         <ChoiceHeading>The House Picked</ChoiceHeading>
-        <Circle option={houseChoice} />
+        <Flex>
+          <Circle option={houseChoice} />
+        </Flex>
       </div>
-    </FlexRow>
+    </Flex>
   );
 };

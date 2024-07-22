@@ -27,6 +27,7 @@ const StyledHeader = styled.h1`
 
   @media (max-width: ${MOBILE_SCREEN_WIDTH_PX}) {
     width: 100%;
+    padding: 20px 16px;
   }
 `;
 

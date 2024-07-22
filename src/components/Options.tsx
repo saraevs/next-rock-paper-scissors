@@ -13,7 +13,7 @@ const StyledOptions = styled.div`
 
   @media (max-width: ${MOBILE_SCREEN_WIDTH_PX}) {
     width: 100%;
-    gap: 70px;
+    gap: 20px;
   }
 `;
 

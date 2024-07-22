@@ -6,6 +6,7 @@ import scissorsIcon from "public/images/icon-scissors.svg";
 export const MOBILE_SCREEN_WIDTH_PX = "375px";
 
 export const INNER_CIRCLE_WIDTH = 130;
+export const MOBILE_INNER_CIRCLE_WIDTH = 100;
 
 export const options: Option[] = [
   {
