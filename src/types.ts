@@ -1,4 +1,4 @@
-export type Icon = {
+export type Option = {
   title: string;
   icon: string;
   color1: string;

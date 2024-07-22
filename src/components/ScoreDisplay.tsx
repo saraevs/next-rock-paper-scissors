@@ -7,8 +7,7 @@ const ScoreDisplayBox = styled.div`
   justify-content: center;
   flex-direction: column;
   background-color: #fff;
-  height: 100%;
-  width: 33%;
+  padding: 10px 45px;
   border-radius: 5px;
 `;
 
@@ -23,10 +22,10 @@ const ScoreNumber = styled.span`
 `;
 
 type ScoreDisplayProps = {
-  score?: number;
+  score: number;
 };
 
-export const ScoreDisplay: React.FC<ScoreDisplayProps> = ({ score = 0 }) => {
+export const ScoreDisplay: React.FC<ScoreDisplayProps> = ({ score }) => {
   return (
     <ScoreDisplayBox>
       <ScoreText>SCORE</ScoreText>

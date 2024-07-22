@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Circle } from "./Circle";
 import styled from "styled-components";
 import rockIcon from "public/images/icon-rock.svg";
 import paperIcon from "public/images/icon-paper.svg";
 import scissorsIcon from "public/images/icon-scissors.svg";
-import { Icon } from "@/types";
 import { MOBILE_SCREEN_WIDTH_PX } from "../constants";
+import { Option } from "../types";
 
-const StyledCircleLayout = styled.div`
+const StyledOptions = styled.div`
   display: flex;
-  width: 100%;
+  width: 50%;
   justify-content: center;
   flex-wrap: wrap;
   gap: 100px;
+
   @media (max-width: ${MOBILE_SCREEN_WIDTH_PX}) {
+    width: 100%;
     gap: 70px;
   }
 `;
@@ -22,10 +24,13 @@ const StyledCircle = styled(Circle)`
   flex: 1;
 `;
 
-type CircleLayoutProps = {};
+type OptionsProps = {
+  handleWin: () => void;
+  setChoice: (option: Option) => void;
+};
 
-export const CircleLayout: React.FC<CircleLayoutProps> = ({}) => {
-  const icons: Icon[] = [
+export const Options: React.FC<OptionsProps> = ({ handleWin, setChoice }) => {
+  const options: Option[] = [
     {
       title: "Rock",
       icon: rockIcon,
@@ -46,17 +51,12 @@ export const CircleLayout: React.FC<CircleLayoutProps> = ({}) => {
     },
   ];
   return (
-    <StyledCircleLayout>
-      {icons.map((i) => {
+    <StyledOptions>
+      {options.map((o) => {
         return (
-          <StyledCircle
-            title={i.title}
-            icon={i.icon}
-            color1={i.color1}
-            color2={i.color2}
-          />
+          <StyledCircle option={o} key={o.title} setChosenOption={setChoice} />
         );
       })}
-    </StyledCircleLayout>
+    </StyledOptions>
   );
 };

@@ -1,23 +1,25 @@
 import React from "react";
 import Image from "next/image";
 import { styled } from "styled-components";
+import { Option } from "../types";
+import { INNER_CIRCLE_WIDTH } from "../constants";
 
 const InnerCircle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 100px;
+  width: ${INNER_CIRCLE_WIDTH}px;
+  height: ${INNER_CIRCLE_WIDTH}px;
   border-radius: 50%;
   background-color: #fff;
 `;
 
-const OuterCircle = styled.div<{ color1: string; color2: string }>`
+const OuterCircle = styled.button<{ color1: string; color2: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px;
-  height: 120px;
+  width: ${INNER_CIRCLE_WIDTH + INNER_CIRCLE_WIDTH / 4}px;
+  height: ${INNER_CIRCLE_WIDTH + INNER_CIRCLE_WIDTH / 4}px;
   border-radius: 50%;
   background-image: radial-gradient(
     ${(props) => props.color1},
@@ -26,22 +28,22 @@ const OuterCircle = styled.div<{ color1: string; color2: string }>`
 `;
 
 type CircleProps = {
-  title: string;
-  icon: string;
-  color1: string;
-  color2: string;
+  option: Option;
+  setChosenOption: (option: Option) => void;
 };
 
-export const Circle: React.FC<CircleProps> = ({
-  title,
-  icon,
-  color1,
-  color2,
-}) => {
+export const Circle: React.FC<CircleProps> = ({ option, setChosenOption }) => {
   return (
-    <OuterCircle color1={color1} color2={color2}>
+    <OuterCircle
+      color1={option.color1}
+      color2={option.color2}
+      onClick={(e) => {
+        setChosenOption(option);
+        e.stopPropagation();
+      }}
+    >
       <InnerCircle>
-        <Image src={icon} alt={title} width={50} height={50} />
+        <Image src={option.icon} alt={option.title} width={70} height={70} />
       </InnerCircle>
     </OuterCircle>
   );

@@ -1,11 +1,16 @@
 "use client";
 import styled from "styled-components";
 import { Heading } from "@/src/components/Heading";
-import { CircleLayout } from "@/src/components/CircleLayout";
-import { MOBILE_SCREEN_WIDTH_PX } from "@/src/constants";
+import { Options } from "@/src/components/Options";
+import { useState } from "react";
+import { Option } from "../src/types";
 
 const Container = styled.div`
-  background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+  background-image: radial-gradient(
+    at top,
+    hsl(214, 47%, 23%),
+    hsl(237, 49%, 15%)
+  );
   position: fixed;
   top: 0;
   bottom: 0;
@@ -18,22 +23,21 @@ const Container = styled.div`
   gap: 32px;
 `;
 
-const StyledFlex = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  @media (max-width: ${MOBILE_SCREEN_WIDTH_PX}) {
-    width: 100%;
-  }
-`;
-
 export default function HomePage({}) {
+  const [currentScore, setCurrentScore] = useState(0);
+  const [userChoice, setUserChoice] = useState<Option>();
+
+  const handleWin = () => {
+    setCurrentScore(currentScore + 1);
+  };
+
   return (
     <Container>
-      <Heading />
-      <StyledFlex>
-        <CircleLayout />
-      </StyledFlex>
+      <Heading score={currentScore} />
+      {!userChoice && (
+        <Options handleWin={handleWin} setChoice={setUserChoice} />
+      )}
+      <div>{userChoice?.title}</div>
     </Container>
   );
 }
