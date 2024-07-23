@@ -7,7 +7,7 @@ import backgroundTriangle from "public/images/bg-triangle.svg";
 
 const StyledOptions = styled.div`
   display: flex;
-  width: 50%;
+  width: 450px;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
