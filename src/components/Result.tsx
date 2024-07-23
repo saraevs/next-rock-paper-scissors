@@ -43,6 +43,7 @@ const StyledButton = styled.button`
   padding: 8px;
   width: 100%;
   font-size: 8pt;
+  cursor: pointer;
 `;
 
 const selectRandomOption = () => {
