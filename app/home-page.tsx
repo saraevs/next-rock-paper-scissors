@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Option } from "../src/types";
 import { Result } from "@/src/components/Result";
 import { MOBILE_SCREEN_WIDTH_PX } from "@/src/constants";
+import { RulesButton } from "@/src/components/RulesButton";
 
 const Container = styled.div`
   background-image: radial-gradient(
@@ -51,6 +52,7 @@ export default function HomePage({}) {
           clearUserChoice={clearUserChoice}
         />
       )}
+      <RulesButton />
     </Container>
   );
 }
