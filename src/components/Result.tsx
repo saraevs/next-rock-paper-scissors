@@ -81,7 +81,7 @@ export const Result: React.FC<ResultProps> = ({
     if (result === Outcome.youWin) {
       handleUserWin();
     }
-  }, [result]);
+  }, [result, handleUserWin]);
 
   return (
     <Flex>
