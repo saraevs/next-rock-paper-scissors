@@ -13,9 +13,18 @@ const StyledRulesButton = styled.button`
   cursor: pointer;
   padding: 10px 30px;
   color: #fff;
+  margin: 0 16px;
+`;
+
+const Flex = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
   position: absolute;
-  right: 16px;
   bottom: 16px;
+  @media (max-width: ${MOBILE_SCREEN_WIDTH_PX}) {
+    justify-content: center;
+  }
 `;
 
 const StyledCloseButton = styled.button`
@@ -88,7 +97,9 @@ const Title = styled(Dialog.Title)`
 export const RulesModal = () => (
   <Dialog.Root>
     <Dialog.Trigger asChild>
-      <StyledRulesButton aria-label="open rules">RULES</StyledRulesButton>
+      <Flex>
+        <StyledRulesButton aria-label="open rules">RULES</StyledRulesButton>
+      </Flex>
     </Dialog.Trigger>
     <Dialog.Portal>
       <Overlay />
